@@ -76,6 +76,8 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--ink); }
+    .nav-links a.btn-primary { color: var(--white); }
+    .nav-links a.btn-primary:hover { color: var(--white); }
 
     /* ─── BUTTONS ─── */
     .btn {
@@ -697,11 +699,11 @@
 <!-- NAV -->
 <nav>
   <div class="container">
-    <a href="#" class="logo">korvi</a>
+    <a href="#" class="logo"><img src="/logo-192.png" alt="Korvi" style="height:28px;vertical-align:middle;margin-right:8px;">korvi</a>
     <div class="nav-links">
       <a href="#features">Features</a>
       <a href="#how-it-works">How it works</a>
-      <a href="#cta" class="btn btn-primary btn-small">Get Early Access</a>
+      <a href="mailto:earlyaccess@korvi.eu" class="btn btn-primary btn-small">Get Early Access</a>
     </div>
   </div>
 </nav>
@@ -714,65 +716,21 @@
       <h1>Plan meals.<br>Cook together.<br><span class="accent">Eat better.</span></h1>
       <p>Korvi helps your household plan a week of meals, generates the shopping list, and guides you through every recipe — step by step.</p>
       <div class="hero-buttons">
-        <a href="#cta" class="btn btn-primary">Get Early Access</a>
+        <a href="mailto:earlyaccess@korvi.eu" class="btn btn-primary">Get Early Access</a>
         <a href="#features" class="btn btn-secondary">See How It Works</a>
       </div>
     </div>
     <div class="hero-visual">
       <div class="phone-mockup">
         <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <div class="phone-screen-header">This Week</div>
-          <div class="phone-screen-sub">5 of 7 days planned</div>
-          <div class="mock-meal">
-            <div class="mock-meal-icon" style="background: #FFF3E0;">🍝</div>
-            <div class="mock-meal-text">
-              <div class="mock-meal-title">Pasta Carbonara</div>
-              <div class="mock-meal-sub">Monday</div>
-            </div>
-            <div class="mock-meal-meta">25 min</div>
-          </div>
-          <div class="mock-meal">
-            <div class="mock-meal-icon" style="background: #E8F5E9;">🥗</div>
-            <div class="mock-meal-text">
-              <div class="mock-meal-title">Greek Salad</div>
-              <div class="mock-meal-sub">Tuesday</div>
-            </div>
-            <div class="mock-meal-meta">15 min</div>
-          </div>
-          <div class="mock-meal">
-            <div class="mock-meal-icon" style="background: #FDE7E7;">🍲</div>
-            <div class="mock-meal-text">
-              <div class="mock-meal-title">Chicken Soup</div>
-              <div class="mock-meal-sub">Wednesday</div>
-            </div>
-            <div class="mock-meal-meta">40 min</div>
-          </div>
-          <div class="mock-meal">
-            <div class="mock-meal-icon" style="background: #EDE7F6;">🐟</div>
-            <div class="mock-meal-text">
-              <div class="mock-meal-title">Salmon Bowl</div>
-              <div class="mock-meal-sub">Thursday</div>
-            </div>
-            <div class="mock-meal-meta">30 min</div>
-          </div>
-          <div class="mock-meal">
-            <div class="mock-meal-icon" style="background: #E0F7FA;">🌮</div>
-            <div class="mock-meal-text">
-              <div class="mock-meal-title">Veggie Tacos</div>
-              <div class="mock-meal-sub">Friday</div>
-            </div>
-            <div class="mock-meal-meta">20 min</div>
-          </div>
-        </div>
+        <img src="/screenshots/mealplan.png" alt="Korvi meal plan" style="width:100%;height:100%;object-fit:cover;object-position:top;">
       </div>
       <div class="phone-float float-family">
         <div class="float-family-avatars">
           <div class="float-family-avatar" style="background: var(--green);">O</div>
           <div class="float-family-avatar" style="background: #5C6BC0;">M</div>
-          <div class="float-family-avatar" style="background: #EF5350;">K</div>
         </div>
-        <div class="float-family-text"><strong>3 members</strong><br>synced in real time</div>
+        <div class="float-family-text"><strong>Household</strong><br>synced in real time</div>
       </div>
       <div class="phone-float float-cook">
         <div class="float-cook-label">Cook Mode</div>
@@ -856,29 +814,7 @@
     <div class="showcase-visual">
       <div class="showcase-phone">
         <div class="showcase-phone-notch"></div>
-        <div class="showcase-phone-screen">
-          <div class="showcase-phone-header">Pasta Carbonara</div>
-          <div class="cook-step-card">
-            <div class="cook-step-num">2</div>
-            <div class="cook-step-text">Fry the guanciale in a dry pan over medium heat until golden and crispy.</div>
-            <div class="cook-ingredients">
-              <span class="cook-ingredient-tag">150g guanciale</span>
-            </div>
-          </div>
-          <div class="cook-step-card">
-            <div class="cook-step-num">3</div>
-            <div class="cook-step-text">While the meat cooks, whisk eggs with pecorino and black pepper in a bowl.</div>
-            <div class="cook-ingredients">
-              <span class="cook-ingredient-tag">3 eggs</span>
-              <span class="cook-ingredient-tag">80g pecorino</span>
-              <span class="cook-ingredient-tag">pepper</span>
-            </div>
-          </div>
-          <div class="cook-timer">
-            <span class="cook-timer-label">⏱ Boil pasta</span>
-            <span class="cook-timer-time">7:42</span>
-          </div>
-        </div>
+        <img src="/screenshots/mealdetail.png" alt="Korvi recipe detail" style="width:100%;height:100%;object-fit:cover;object-position:top;">
       </div>
     </div>
   </div>
@@ -890,42 +826,7 @@
     <div class="showcase-visual">
       <div class="showcase-phone">
         <div class="showcase-phone-notch"></div>
-        <div class="showcase-phone-screen">
-          <div class="showcase-phone-header">Shopping List</div>
-          <div class="shop-category">
-            <div class="shop-category-header">🥬 Produce</div>
-            <div class="shop-item">
-              <div class="shop-checkbox shop-checkbox-done"></div>
-              <span class="shop-item-done">Tomatoes × 4</span>
-            </div>
-            <div class="shop-item">
-              <div class="shop-checkbox"></div>
-              <span>Lettuce × 1</span>
-            </div>
-            <div class="shop-item">
-              <div class="shop-checkbox"></div>
-              <span>Cucumber × 2</span>
-            </div>
-          </div>
-          <div class="shop-category">
-            <div class="shop-category-header">🧀 Dairy</div>
-            <div class="shop-item">
-              <div class="shop-checkbox"></div>
-              <span>Pecorino 80g</span>
-            </div>
-            <div class="shop-item">
-              <div class="shop-checkbox"></div>
-              <span>Eggs × 6</span>
-            </div>
-          </div>
-          <div class="shop-category">
-            <div class="shop-category-header">🥩 Meat</div>
-            <div class="shop-item">
-              <div class="shop-checkbox"></div>
-              <span>Guanciale 150g</span>
-            </div>
-          </div>
-        </div>
+        <img src="/screenshots/shoppinglist.png" alt="Korvi shopping list" style="width:100%;height:100%;object-fit:cover;object-position:top;">
       </div>
     </div>
     <div>
@@ -1004,12 +905,12 @@
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <a href="#" class="footer-logo">korvi</a>
+    <a href="#" class="footer-logo"><img src="/logo-192.png" alt="Korvi" style="height:24px;vertical-align:middle;margin-right:6px;">korvi</a>
     <p>&copy; 2026 Korvi. Made in Estonia.</p>
     <div class="footer-links">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/delete-account.html">Account</a>
+      <a href="mailto:hello@korvi.eu">Contact</a>
     </div>
   </div>
 </footer>
