@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.eu.korvi.app",
+        "paths": ["/share/*"]
+      }
+    ]
+  }
+}
