@@ -5,6 +5,10 @@
       {
         "appID": "TEAMID.eu.korvi.app",
         "paths": ["/share/*"]
+      },
+      {
+        "appID": "TEAMID.eu.korvi.app.alpha",
+        "paths": ["/share/*"]
       }
     ]
   }
