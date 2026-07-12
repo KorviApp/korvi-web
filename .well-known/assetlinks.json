@@ -4,7 +4,7 @@
     "target": {
       "namespace": "android_app",
       "package_name": "eu.korvi.app",
-      "sha256_cert_fingerprints": ["REPLACE_WITH_SHA256_SIGNING_CERT_FINGERPRINT"]
+      "sha256_cert_fingerprints": ["B7:88:BD:FB:34:DA:2D:A0:2C:6D:9C:1F:17:50:66:2B:A6:23:8B:83:CC:B7:1A:D7:5B:CF:08:43:F1:AF:68:ED"]
     }
   }
 ]
