@@ -132,6 +132,20 @@
     (function () {
       var card = document.getElementById('card');
 
+      // #878 NOTE: the /share/:type/:code branch below is currently
+      // unreachable. korvi-app's #766/#874 Cloudflare Worker
+      // (korvi-app/docs/deploy/share-preview-worker.js) transparently
+      // proxies every request to korvi.eu/share/* — crawler or human —
+      // straight to a Supabase edge function, which now handles the full
+      // human-facing experience this file was originally built for
+      // (styled tease + korvi:// redirect attempt), plus content-aware
+      // OG tags for link-preview crawlers. GitHub Pages (and this file)
+      // never sees a /share/* request while that Worker route exists.
+      // Left in place rather than deleted in case routing ever moves back
+      // to this repo — see korvi-app#878 and the not-yet-filed korvi-web
+      // revamp ticket for the current thinking on where this should live
+      // long-term.
+
       // Match /share/:type/:code (type = household|recipe, code = 7-char alphanumeric)
       var match = window.location.pathname.match(/^\/share\/([a-zA-Z]+)\/([a-zA-Z0-9]{1,16})\/?$/);
 
