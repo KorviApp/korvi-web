@@ -1,0 +1,67 @@
+/* Korvi shared brand tokens + primitives.
+ *
+ * Single source of truth for color/type tokens and the primary button
+ * style, extracted from index.html so other pages/services that need to
+ * look like Korvi (e.g. korvi-app's share-preview edge function, served
+ * from a different origin/repo) can link this file instead of hand-copying
+ * hex values that drift out of sync. Keep this file additive-only and
+ * small — it's a shared dependency, not a full design system; page-specific
+ * layout stays in each page's own stylesheet.
+ */
+
+:root {
+  --green: #2D7A3A;
+  --green-dark: #205A2C;
+  --mint: #EAF4EC;
+  --green-hair: #BCDCC1;
+  --lime: #D7EC59;
+  --ink: #0F1413;
+  --ink-soft: #6B7572;
+  --ink-faint: #9AA19E;
+  --hair: #ECECEA;
+  --wash: #F6F6F3;
+  --white: #FFFFFF;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: var(--green);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: var(--green-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(45, 122, 58, 0.3);
+}
+.btn-secondary {
+  background: var(--mint);
+  color: var(--green);
+}
+.btn-secondary:hover {
+  background: var(--green-hair);
+}
+.btn-small {
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 10px;
+}

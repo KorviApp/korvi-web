@@ -10,33 +10,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/brand.css">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    
-    :root {
-      --green: #2D7A3A;
-      --green-dark: #205A2C;
-      --mint: #EAF4EC;
-      --green-hair: #BCDCC1;
-      --lime: #D7EC59;
-      --ink: #0F1413;
-      --ink-soft: #6B7572;
-      --ink-faint: #9AA19E;
-      --hair: #ECECEA;
-      --wash: #F6F6F3;
-      --white: #FFFFFF;
-    }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--ink);
-      background: var(--white);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
 
     .container {
       max-width: 1120px;
@@ -79,42 +57,6 @@
     .nav-links a:hover { color: var(--ink); }
     .nav-links a.btn-primary { color: var(--white); }
     .nav-links a.btn-primary:hover { color: var(--white); }
-
-    /* ─── BUTTONS ─── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: 14px;
-      font-size: 16px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
-    }
-    .btn-primary {
-      background: var(--green);
-      color: var(--white);
-    }
-    .btn-primary:hover {
-      background: var(--green-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(45,122,58,0.3);
-    }
-    .btn-secondary {
-      background: var(--mint);
-      color: var(--green);
-    }
-    .btn-secondary:hover {
-      background: var(--green-hair);
-    }
-    .btn-small {
-      padding: 10px 20px;
-      font-size: 14px;
-      border-radius: 10px;
-    }
 
     /* ─── HERO ─── */
     .hero {
