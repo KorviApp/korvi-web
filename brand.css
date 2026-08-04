@@ -9,7 +9,42 @@
  * layout stays in each page's own stylesheet.
  */
 
+/* ─── Nunito (self-hosted) ────────────────────────────────────────────
+ * Matches korvi-app's src/theme/typography.ts: ExtraBold 800 for the
+ * "Korvi" wordmark only, SemiBold 600 for headings. Body copy stays on
+ * the system stack.
+ *
+ * Deliberately self-hosted rather than loaded from Google Fonts: the
+ * Google Fonts stylesheet is a render-blocking third-party request, and
+ * it leaks visitor IPs to a US processor — a GDPR liability for an
+ * EU-market site. Only the two weights we actually use are shipped, so
+ * never set a font-weight other than 600/800 on Nunito text (anything
+ * else gets synthesised and looks wrong).
+ *
+ * Paths are absolute so they resolve against korvi.eu even when this
+ * stylesheet is linked cross-origin (e.g. the share-preview function).
+ */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Nunito-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/Nunito-ExtraBold.woff2') format('woff2');
+}
+
 :root {
+  color-scheme: light dark;
+
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-brand: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
   --green: #2D7A3A;
   --green-dark: #205A2C;
   --mint: #EAF4EC;
@@ -21,14 +56,55 @@
   --hair: #ECECEA;
   --wash: #F6F6F3;
   --white: #FFFFFF;
+
+  /* Always-dark section plate (the "how it works" band + the footer).
+   * These are deliberately NOT flipped by the dark-mode block below —
+   * the band is a design device that stays dark in both themes, so any
+   * text/chip sitting on it can safely assume a dark background. */
+  --plate: #0F1413;
+  --plate-ink: #FFFFFF;
+
+  /* Text/iconography sitting on a --green fill. This has to flip
+   * independently of --ink/--white: dark mode lightens --green to #4CAF60,
+   * and white on that is only ~2.6:1 (fails AA), so dark mode puts dark
+   * text on the lighter green instead. */
+  --on-green: #FFFFFF;
+}
+
+/* Dark mode — mirrors korvi-app's dark palette in src/theme/colors.ts. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --green: #4CAF60;
+    --green-dark: #2D7A3A;
+    --mint: #1A2E1C;
+    --lime: #C8DB4A;
+    --ink: #E8EDEC;
+    --ink-soft: #9AA19E;
+    --ink-faint: #6B7572;
+    --hair: #2C2C2C;
+    --wash: #121212;
+    --white: #1E1E1E;
+
+    /* A touch darker than --wash so the plate still reads as its own band. */
+    --plate: #0A0D0C;
+    --on-green: #0A0D0C;
+  }
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-body);
   color: var(--ink);
   background: var(--white);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Headings are Nunito SemiBold — never ExtraBold. ExtraBold is reserved
+ * for the "Korvi" wordmark, which is shipped as an SVG lockup so it never
+ * depends on the webfont loading at all. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-brand);
+  font-weight: 600;
 }
 
 .btn {
@@ -46,7 +122,7 @@ body {
 }
 .btn-primary {
   background: var(--green);
-  color: var(--white);
+  color: var(--on-green);
 }
 .btn-primary:hover {
   background: var(--green-dark);
@@ -64,4 +140,10 @@ body {
   padding: 10px 20px;
   font-size: 14px;
   border-radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* --green-hair is a light-mode tint; on a dark mint chip it would be a
+   * near-white slab. Lift the mint instead. */
+  .btn-secondary:hover { background: #24422A; }
 }
