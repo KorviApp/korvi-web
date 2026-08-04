@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# /share/* is deliberately NOT disallowed. Those URLs are per-user invite
+# and recipe links that shouldn't rank, but they are served by a Cloudflare
+# Worker + Supabase edge function that renders real link-preview cards, and
+# the major social crawlers honour robots.txt — blocking the path here would
+# break those previews. They're kept out of the index with `noindex` from
+# that function instead, which is the right tool for the job.
+
+Sitemap: https://korvi.eu/sitemap.xml
