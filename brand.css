@@ -51,7 +51,13 @@
   --green-hair: #BCDCC1;
   --lime: #D7EC59;
   --ink: #0F1413;
-  --ink-soft: #6B7572;
+  /* #68716E, not #6B7572: the old value measured 4.40:1 on --wash (#F6F6F3),
+   * under WCAG AA's 4.5:1 for normal text. It passed on white cards (4.76:1)
+   * and only failed on the slightly darker page background, which is why it
+   * went unnoticed. #68716E clears both (4.64:1 / 5.03:1). Kept deliberately
+   * in sync with korvi-app's theme/colors.ts `inkSoft` — one brand token,
+   * two repos; change both or neither. */
+  --ink-soft: #68716E;
   /* Was #9AA19E — only 2.6:1 on white, well under WCAG AA's 4.5:1 for
    * body text, and it is used for real copy (the "Cook Mode" float label,
    * the 404 hint). #6E7673 is 4.7:1. AA squeezes "faint" and "soft" close
