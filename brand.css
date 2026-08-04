@@ -52,7 +52,11 @@
   --lime: #D7EC59;
   --ink: #0F1413;
   --ink-soft: #6B7572;
-  --ink-faint: #9AA19E;
+  /* Was #9AA19E — only 2.6:1 on white, well under WCAG AA's 4.5:1 for
+   * body text, and it is used for real copy (the "Cook Mode" float label,
+   * the 404 hint). #6E7673 is 4.7:1. AA squeezes "faint" and "soft" close
+   * together at this lightness; that is the constraint, not an oversight. */
+  --ink-faint: #6E7673;
   --hair: #ECECEA;
   --wash: #F6F6F3;
   --white: #FFFFFF;
@@ -80,7 +84,8 @@
     --lime: #C8DB4A;
     --ink: #E8EDEC;
     --ink-soft: #9AA19E;
-    --ink-faint: #6B7572;
+    /* Same AA fix in the other direction: #6B7572 is 3.9:1 on --wash. */
+    --ink-faint: #8F9794;
     --hair: #2C2C2C;
     --wash: #121212;
     --white: #1E1E1E;
@@ -146,4 +151,16 @@ h1, h2, h3, h4, h5, h6 {
   /* --green-hair is a light-mode tint; on a dark mint chip it would be a
    * near-white slab. Lift the mint instead. */
   .btn-secondary:hover { background: #24422A; }
+}
+
+/* Motion is decorative everywhere on this site, so it can simply go away.
+ * Deliberately targeted rather than the blanket
+ * `*, *::before, *::after { animation-duration: .01ms !important }`
+ * recipe: that would also freeze 404.html's loading spinner mid-turn,
+ * and a stopped spinner reads as "hung", which is worse than the motion
+ * it removes. Looping progress indicators are the standard exception. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+  .btn-primary:hover { transform: none; }
 }

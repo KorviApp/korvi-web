@@ -5,12 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Korvi — Your Family Meal Planner</title>
   <meta name="description" content="Plan your week of meals, cook step-by-step, and share everything with your household. Korvi makes home cooking effortless.">
+  <link rel="canonical" href="https://korvi.eu/">
+
+  <!-- Open Graph / Twitter. Without these, shared korvi.eu links render as
+       a bare URL with no title, blurb or image. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Korvi">
+  <meta property="og:url" content="https://korvi.eu/">
+  <meta property="og:title" content="Korvi — Your Family Meal Planner">
+  <meta property="og:description" content="Plan your week of meals, cook step-by-step, and share everything with your household. Korvi makes home cooking effortless.">
+  <meta property="og:image" content="https://korvi.eu/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Korvi — plan meals, cook together, eat better.">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Korvi — Your Family Meal Planner">
+  <meta name="twitter:description" content="Plan your week of meals, cook step-by-step, and share everything with your household. Korvi makes home cooking effortless.">
+  <meta name="twitter:image" content="https://korvi.eu/og-default.png">
+
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <!-- Nunito is self-hosted via @font-face in brand.css — no third-party font request. -->
   <link rel="preload" as="font" type="font/woff2" href="/fonts/Nunito-SemiBold.woff2" crossorigin>
   <link rel="stylesheet" href="/brand.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Korvi",
+    "url": "https://korvi.eu/",
+    "description": "Plan your week of meals, cook step-by-step, and share everything with your household. Korvi makes home cooking effortless.",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "iOS, Android",
+    "inLanguage": ["en", "et"],
+    "image": "https://korvi.eu/og-default.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Korvi",
+      "url": "https://korvi.eu/",
+      "logo": "https://korvi.eu/logo-512.png",
+      "email": "hello@korvi.eu"
+    }
+  }
+  </script>
+
+  <!-- Set before first paint so the mobile nav can be collapsed by CSS only
+       when JS is actually available (see the .nav-toggle rules below). -->
+  <script>document.documentElement.classList.add('js');</script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -67,6 +116,51 @@
        is brand.css's, not a nav-specific choice. */
     .nav-links a.btn-primary,
     .nav-links a.btn-primary:hover { color: var(--on-green); }
+
+    /* Hamburger — hidden on desktop, and hidden entirely without JS (see
+       the no-JS fallback in the responsive block). */
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      margin-right: -10px;
+      padding: 0;
+      background: none;
+      border: none;
+      border-radius: 10px;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .nav-toggle svg { display: block; width: 24px; height: 24px; }
+    .nav-toggle .icon-close { display: none; }
+    .nav-toggle[aria-expanded="true"] .icon-open { display: none; }
+    .nav-toggle[aria-expanded="true"] .icon-close { display: block; }
+
+    /* ─── SKIP LINK ─── */
+    .skip-link {
+      position: absolute;
+      left: 24px;
+      top: -100px;
+      z-index: 200;
+      padding: 12px 20px;
+      border-radius: 0 0 12px 12px;
+      background: var(--green);
+      color: var(--on-green);
+      font-weight: 600;
+      text-decoration: none;
+      transition: top 0.15s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* Keyboard focus must stay visible everywhere. */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--green);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
 
     /* ─── HERO ─── */
     .hero {
@@ -647,16 +741,77 @@
       .steps { grid-template-columns: 1fr; }
       .step-connector { display: none; }
       .social-strip .container { gap: 32px; }
-      .nav-links a:not(.btn) { display: none; }
+
+      /* The footer's three columns never wrapped, so they pushed the page
+         wider than the viewport (383px at a 375px width) and gave every
+         mobile visitor a horizontal scrollbar. Pre-existing; adding the
+         Terms link below would have made it worse. */
+      footer .container { flex-wrap: wrap; justify-content: center; gap: 20px 32px; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+
+      /* ─── MOBILE NAV ───
+         This used to be `.nav-links a:not(.btn) { display: none }` — the
+         links were hidden with nothing to reveal them again, so Features
+         and How it works were simply unreachable below 900px, on the most
+         common device for a mobile app's landing page.
+
+         Progressive enhancement: the collapsed state only applies under
+         `html.js`, so if the inline script never runs the links stay on
+         screen (wrapped) rather than disappearing for good. */
+      .nav-toggle { display: inline-flex; }
+
+      html:not(.js) .nav-links { flex-wrap: wrap; gap: 8px 16px; justify-content: flex-end; }
+      html:not(.js) .nav-toggle { display: none; }
+
+      html.js .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 8px 24px 20px;
+        background: var(--white);
+        border-bottom: 1px solid var(--hair);
+        box-shadow: 0 12px 24px rgba(15,20,19,0.08);
+      }
+      html.js .nav-links[data-open] { display: flex; }
+      html.js .nav-links a {
+        padding: 14px 4px;
+        font-size: 17px;
+        border-bottom: 1px solid var(--hair);
+      }
+      html.js .nav-links a.btn {
+        justify-content: center;
+        margin-top: 12px;
+        border-bottom: none;
+      }
     }
     @media (max-width: 600px) {
       .hero h1 { font-size: 38px; }
       .section-title { font-size: 32px; }
       .roadmap { flex-direction: column; align-items: center; }
+      footer .container { flex-direction: column; }
+    }
+
+    /* ─── REDUCED MOTION ───
+       Every transition/transform here is decorative. brand.css carries the
+       same guard for the shared .btn styles. */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .feature-card,
+      .nav-links a,
+      .footer-links a,
+      .skip-link { transition: none; }
+      .feature-card:hover { transform: none; }
     }
   </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- NAV -->
 <nav>
@@ -674,7 +829,15 @@
         <path d="M130.64 80.77Q127.4 80.77 125.7 78.98Q124 77.19 124 73.96V25.96Q124 22.72 125.7 20.98Q127.4 19.23 130.64 19.23Q133.79 19.23 135.49 20.98Q137.19 22.72 137.19 25.96V46.13H137.36L160 22.47Q161.45 20.94 163.02 20.13Q164.6 19.32 166.64 19.32Q169.62 19.32 170.94 20.85Q172.26 22.38 172.09 24.43Q171.91 26.47 170.21 28.26L147.49 51.49L147.57 45.79L171.4 71.23Q173.36 73.36 173.4 75.57Q173.45 77.79 171.96 79.28Q170.47 80.77 167.57 80.77Q165.11 80.77 163.62 79.74Q162.13 78.72 160.34 76.77L137.36 52.6H137.19V73.96Q137.19 77.19 135.53 78.98Q133.87 80.77 130.64 80.77ZM201.53 80.94Q194.81 80.94 189.83 78.3Q184.85 75.66 182.13 70.72Q179.4 65.79 179.4 59.06Q179.4 54.04 180.94 50.04Q182.47 46.04 185.4 43.19Q188.34 40.34 192.43 38.85Q196.51 37.36 201.53 37.36Q208.26 37.36 213.23 40Q218.21 42.64 220.98 47.49Q223.74 52.34 223.74 59.06Q223.74 64.17 222.17 68.17Q220.6 72.17 217.7 75.06Q214.81 77.96 210.68 79.45Q206.55 80.94 201.53 80.94ZM201.53 71.32Q204.34 71.32 206.38 69.96Q208.43 68.6 209.62 65.91Q210.81 63.23 210.81 59.06Q210.81 52.85 208.26 49.91Q205.7 46.98 201.53 46.98Q198.81 46.98 196.72 48.26Q194.64 49.53 193.49 52.21Q192.34 54.89 192.34 59.06Q192.34 65.28 194.89 68.3Q197.45 71.32 201.53 71.32ZM238.21 80.77Q234.98 80.77 233.28 79.06Q231.57 77.36 231.57 74.21V44Q231.57 40.85 233.23 39.19Q234.89 37.53 237.87 37.53Q240.94 37.53 242.55 39.19Q244.17 40.85 244.17 44V48.43H243.32Q244.34 43.32 247.83 40.51Q251.32 37.7 256.85 37.36Q258.98 37.19 260.13 38.43Q261.28 39.66 261.36 42.47Q261.53 45.11 260.3 46.64Q259.06 48.17 256.17 48.51L254.21 48.68Q249.36 49.11 247.02 51.49Q244.68 53.87 244.68 58.38V74.21Q244.68 77.36 243.02 79.06Q241.36 80.77 238.21 80.77ZM284.34 80.77Q281.87 80.77 280 79.45Q278.13 78.13 277.02 75.49L264.17 45.87Q263.23 43.66 263.49 41.74Q263.74 39.83 265.32 38.68Q266.89 37.53 269.7 37.53Q272 37.53 273.45 38.6Q274.89 39.66 276 42.64L286.04 68.17H283.32L293.79 42.55Q294.98 39.66 296.43 38.6Q297.87 37.53 300.43 37.53Q302.64 37.53 303.96 38.68Q305.28 39.83 305.57 41.7Q305.87 43.57 304.85 45.79L291.74 75.49Q290.64 78.21 288.81 79.49Q286.98 80.77 284.34 80.77ZM318.55 80.68Q315.4 80.68 313.74 78.85Q312.09 77.02 312.09 73.7V44.6Q312.09 41.19 313.74 39.36Q315.4 37.53 318.55 37.53Q321.62 37.53 323.28 39.36Q324.94 41.19 324.94 44.6V73.7Q324.94 77.02 323.32 78.85Q321.7 80.68 318.55 80.68ZM318.55 30.55Q314.98 30.55 313.06 28.89Q311.15 27.23 311.15 24.17Q311.15 21.02 313.06 19.36Q314.98 17.7 318.55 17.7Q322.13 17.7 324 19.36Q325.87 21.02 325.87 24.17Q325.87 27.23 324 28.89Q322.13 30.55 318.55 30.55Z" fill="currentColor"/>
       </svg>
     </a>
-    <div class="nav-links">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+      <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18"/>
+      </svg>
+    </button>
+    <div class="nav-links" id="nav-links">
       <a href="#features">Features</a>
       <a href="#how-it-works">How it works</a>
       <a href="mailto:earlyaccess@korvi.eu?subject=Korvi%3A%20Early%20Access%20Request" class="btn btn-primary btn-small">Get Early Access</a>
@@ -682,11 +845,13 @@
   </div>
 </nav>
 
+<main id="main" tabindex="-1">
+
 <!-- HERO -->
 <section class="hero">
   <div class="container">
     <div class="hero-content">
-      <div class="hero-badge">🇪🇪 Made in Estonia</div>
+      <div class="hero-badge"><span aria-hidden="true">🇪🇪</span> Made in Estonia</div>
       <h1>Plan meals.<br>Cook together.<br><span class="accent">Eat better.</span></h1>
       <p>Korvi helps your household plan a week of meals, generates the shopping list, and guides you through every recipe — step by step.</p>
       <div class="hero-buttons">
@@ -697,7 +862,9 @@
     <div class="hero-visual">
       <div class="phone-mockup">
         <div class="phone-notch"></div>
-        <img src="/screenshots/mealplan.png" alt="Korvi meal plan" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        <img src="/screenshots/mealplan.png" width="540" height="1200" fetchpriority="high" decoding="async"
+             alt="The Korvi meal plan screen, showing a week of dinners with cook times and cost per serving"
+             style="width:100%;height:100%;object-fit:cover;object-position:top;">
       </div>
       <div class="phone-float float-family">
         <div class="float-family-avatars">
@@ -743,32 +910,32 @@
     <p class="section-subtitle">From "what's for dinner?" to a home-cooked meal on the table — Korvi makes the whole thing effortless.</p>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">📅</div>
+        <div class="feature-icon" aria-hidden="true">📅</div>
         <h3>Weekly Meal Plans</h3>
         <p>Browse recipes and fill your week. Filter by cook time, cuisine, diet, or what's quick and easy.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">👨‍🍳</div>
+        <div class="feature-icon" aria-hidden="true">👨‍🍳</div>
         <h3>Cook Mode</h3>
         <p>Follow recipes step by step with built-in timers. See exactly which ingredients you need at each stage.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">👨‍👩‍👧</div>
+        <div class="feature-icon" aria-hidden="true">👨‍👩‍👧</div>
         <h3>Household Sharing</h3>
         <p>Invite your family with a code. Everyone sees the same plan, shopping list, and progress — synced live.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🛒</div>
+        <div class="feature-icon" aria-hidden="true">🛒</div>
         <h3>Smart Shopping Lists</h3>
         <p>Auto-generated from your meal plan, grouped by aisle. Check items off together in real time.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">⚠️</div>
+        <div class="feature-icon" aria-hidden="true">⚠️</div>
         <h3>Allergen Awareness</h3>
         <p>Set allergens in your profile and recipes are flagged automatically. 12 common allergens covered.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">📝</div>
+        <div class="feature-icon" aria-hidden="true">📝</div>
         <h3>Add Your Own Recipes</h3>
         <p>Submit family favourites to your library. They show up alongside built-in recipes when you plan.</p>
       </div>
@@ -788,7 +955,9 @@
     <div class="showcase-visual">
       <div class="showcase-phone">
         <div class="showcase-phone-notch"></div>
-        <img src="/screenshots/mealdetail.png" alt="Korvi recipe detail" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        <img src="/screenshots/mealdetail.png" width="540" height="1200" loading="lazy" decoding="async"
+             alt="A Korvi recipe detail screen, showing ingredients and step-by-step instructions"
+             style="width:100%;height:100%;object-fit:cover;object-position:top;">
       </div>
     </div>
   </div>
@@ -800,7 +969,9 @@
     <div class="showcase-visual">
       <div class="showcase-phone">
         <div class="showcase-phone-notch"></div>
-        <img src="/screenshots/shoppinglist.png" alt="Korvi shopping list" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        <img src="/screenshots/shoppinglist.png" width="540" height="1200" loading="lazy" decoding="async"
+             alt="The Korvi shopping list screen, with ingredients grouped by aisle and ticked off"
+             style="width:100%;height:100%;object-fit:cover;object-position:top;">
       </div>
     </div>
     <div>
@@ -870,26 +1041,68 @@
     <h2 class="section-title">Ready to make home<br>cooking effortless?</h2>
     <p class="section-subtitle">Korvi is free while in beta. Join now and help us build the meal planner your household deserves.</p>
     <div class="cta-buttons">
-      <a href="#" class="btn btn-primary">Get Early Access</a>
+      <a href="mailto:earlyaccess@korvi.eu?subject=Korvi%3A%20Early%20Access%20Request" class="btn btn-primary">Get Early Access</a>
       <a href="#features" class="btn btn-secondary">Learn More</a>
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
   <div class="container">
     <!-- The footer is a permanently dark plate, so the reversed mono lockup
          is correct here — no need for the currentColor-adaptive one. -->
-    <a href="/" class="footer-logo"><img src="/lockup-mono-white.svg" alt="Korvi" width="78" height="24"></a>
+    <a href="/" class="footer-logo"><img src="/lockup-mono-white.svg" alt="Korvi" width="78" height="24" loading="lazy" decoding="async"></a>
     <p>&copy; 2026 Korvi. Made in Estonia.</p>
     <div class="footer-links">
       <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
       <a href="/delete-account.html">Account</a>
       <a href="mailto:hello@korvi.eu">Contact</a>
     </div>
   </div>
 </footer>
+
+<script>
+  // Mobile nav disclosure. No dependencies; the collapsed CSS is gated on
+  // html.js (set in <head>), so if this never runs the links stay visible
+  // rather than becoming unreachable.
+  (function () {
+    var toggle = document.querySelector('.nav-toggle');
+    var panel = document.getElementById('nav-links');
+    if (!toggle || !panel) return;
+
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) panel.setAttribute('data-open', '');
+      else panel.removeAttribute('data-open');
+    }
+
+    toggle.addEventListener('click', function () {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    // Tapping a link navigates within the page, so close behind it.
+    panel.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setOpen(false);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // Resizing past the breakpoint hides the panel via CSS; clear the state
+    // so aria-expanded doesn't keep claiming it's open on desktop.
+    window.matchMedia('(min-width: 901px)').addEventListener('change', function (e) {
+      if (e.matches) setOpen(false);
+    });
+  })();
+</script>
 
 </body>
 </html>
