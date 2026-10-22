@@ -32,19 +32,36 @@
 </head>
 <body>
 <h1>Korvi — Privacy Policy</h1>
-<p class="updated">Last updated: 19 June 2026</p>
+<p class="updated">Last updated: 22 October 2026</p>
 
 <p>Korvi ("we", "us", "our") is a meal-planning and grocery-shopping app built for the Estonian market. This policy explains what data we collect, why, and how we handle it.</p>
 
 <h2>1. Data we collect</h2>
 <p><strong>Account information:</strong> When you sign up, we store your email address, display name, and a hashed password. If you sign in with Google, Apple, or Facebook, we receive your name, email, and profile picture URL from that provider.</p>
-<p><strong>Household data:</strong> Meal plans, shopping lists, recipe preferences, household size, allergen selections, and invite codes. This data is stored in our database so household members can share a meal plan.</p>
+<p><strong>Household data:</strong> Meal plans, shopping lists, recipe preferences, the people your household cooks for, the foods each of them avoids, and your household's invite code. We keep this in our database so everyone in your household sees the same plan and list.</p>
 <p><strong>Usage analytics:</strong> We use PostHog (EU-hosted) to understand how people use the app — which screens are visited, navigation flows, and feature usage. Events are linked to your user ID but do not include personal content like meal plan details.</p>
 <p><strong>Error reports:</strong> We use Sentry to capture app crashes and errors. Reports include the stack trace, device model, OS version, and your user ID so we can investigate and fix problems. They do not include personal content.</p>
 <p><strong>Feedback:</strong> If you use the in-app feedback button, we store your message along with your email and device info.</p>
 
+<h2>People you cook for and food you avoid</h2>
+<p>Korvi plans for everyone you cook for, not only the people with an account.</p>
+<p><strong>What we store.</strong> For each person: whether they're an adult or a child, an optional first name, and the foods they avoid, chosen from a fixed list of 14, the allergens EU law requires food labels to show: celery, crustaceans (such as prawns and crab), dairy, eggs, fish, gluten, lupin, molluscs (such as mussels and squid), mustard, nuts, peanuts, sesame, soy and sulphites. For someone with a Korvi account we use their account name instead of a separate one. We don't store dates of birth, surnames, photos or any other detail about people without an account. Nothing here is required: a person can be added without a name, and nobody has to have a list.</p>
+<p><strong>This is health information.</strong> A list of foods someone avoids can show an allergy or an intolerance, which the law treats as health data, and we handle it that way.</p>
+<p><strong>Why.</strong> To help leave out the foods the people you cook for avoid, whoever in your household is choosing. Korvi isn't a medical or allergy-safety tool: always check ingredients and labels yourself.</p>
+<p><strong>Legal basis.</strong> We process the foods people avoid on the basis of your explicit consent (GDPR Articles 6(1)(a) and 9(2)(a)). The first time you add a food to avoid, for yourself or for someone else, the app asks you to agree before anything is saved, and we record that you agreed, when, and which wording you saw. When you add foods for someone else, you also confirm you're allowed to share their details (for a child, as their parent or carer). You can withdraw consent at any time by clearing the list in Settings, under Food you avoid: the foods are deleted straight away. Withdrawing doesn't affect what we did before you withdrew.</p>
+<p><strong>Who sees it.</strong> Everyone in your household can see each person's name, whether they're an adult or a child, and what they avoid, and any member can change it. That's the point of it: whoever picks tonight's meal, Korvi leaves out what anyone at the table avoids. Nobody outside your household can see it, unless they join your household, or the people you added move with you into another household (see Data retention). The app also keeps a copy on your phone so it works offline.</p>
+<p><strong>Invite codes.</strong> Anyone who has your household's invite code or invite link can use it to join, and then sees everything above. Codes and links don't expire on their own, so only share them with people you want in your household. You can remove someone from your household at any time: they lose access straight away, and your household gets a new code and link, so the old ones stop working.</p>
+<p><strong>Analytics and error reports.</strong> When a list is saved, our analytics (PostHog) records that it was saved and two numbers: how many people in the household have a list, and how many foods are on those lists in total. It never receives names, which foods anyone avoids, or whether someone is an adult or a child. Like all our analytics, the record is linked to your account ID, not your name or email. Error reports (Sentry) don't include names or the foods anyone avoids.</p>
+<p><strong>If you told Korvi about food you avoid before this change.</strong> Until now your list was private: kept on your phone and copied to your account. The first time you open the updated app, it tells you that food you avoid is now shared with your household, shows your list, and gives you two choices:</p>
+<ul>
+  <li><strong>Keep it and share it with my household.</strong> You agree as described under Legal basis, and your list moves onto your place in the household, where everyone in it can see it.</li>
+  <li><strong>Clear my list instead.</strong> Your old list is deleted and nothing is shared.</li>
+</ul>
+<p>Either way, both old private copies are deleted: the one on your phone and the one stored with your account. Until you choose, your list stays private and isn't shared. You can change or clear it at any time in Settings.</p>
+<p><strong>People without an account.</strong> Someone you add, such as a child or an adult who doesn't use Korvi, can use their rights through the household member who added them, who can change or remove their details at any time, or by emailing <a href="mailto:privacy@korvi.eu">privacy@korvi.eu</a> to see or delete what we hold about them.</p>
+
 <h2>2. Data we do not collect</h2>
-<p>We do not collect location data, contacts, call logs, SMS, photos (beyond recipe images you choose to upload), health data, financial data, or advertising identifiers.</p>
+<p>We do not collect location data, contacts, call logs, SMS, photos (beyond recipe images you choose to upload), financial data or advertising identifiers. The only health information we store is the foods each person in your household avoids, which you choose to enter (see "People you cook for and food you avoid").</p>
 
 <h2>3. How we use your data</h2>
 <ul>
@@ -54,9 +71,11 @@
   <li>To monitor app stability and fix crashes</li>
   <li>To understand usage patterns and improve the app</li>
 </ul>
+<p><strong>Legal basis.</strong> We use your account and household data to provide the service you signed up for (performance of a contract, GDPR Article 6(1)(b)). The foods people avoid are the exception: we use them only with explicit consent (see "People you cook for and food you avoid").</p>
 
 <h2>4. Where your data is stored</h2>
-<p>Our database is hosted on <strong>Supabase</strong> (AWS, EU region). Analytics data is processed by <strong>PostHog</strong> (EU-hosted). Error data is processed by <strong>Sentry</strong> (EU ingest endpoint). All data stays within the European Union.</p>
+<p>Our database is hosted on <strong>Supabase</strong> (AWS, EU region, Ireland). The people you cook for and the foods they avoid are stored there with the rest of your household data, and the database's own rules let only your household's members read or change them. Analytics is processed by <strong>PostHog</strong> in its EU region, and error reports by <strong>Sentry</strong> in its EU region.</p>
+<p>Some of the services we use are based in the United States and can process personal data there: <strong>RevenueCat</strong> (Korvi Plus purchases), <strong>Expo</strong> (app updates), <strong>Resend</strong> (account emails) and <strong>Anthropic</strong> (importing a recipe from a link, and translating public recipes). Each describes the safeguards it relies on for transfers from the EU, such as the EU-US Data Privacy Framework or standard contractual clauses, in its privacy policy, linked in section 5. If you sign in with Google, Apple or Facebook, that provider handles your sign-in under its own privacy policy.</p>
 
 <h2>5. Third-party services</h2>
 <ul>
@@ -65,16 +84,28 @@
   <li><strong>Sentry</strong> — error monitoring (<a href="https://sentry.io/privacy/">privacy policy</a>)</li>
   <li><strong>Google Sign-In / Apple Sign-In / Facebook Login</strong> — authentication only; we receive your name, email, and profile picture</li>
   <li><strong>Expo</strong> — app delivery and over-the-air updates (<a href="https://expo.dev/privacy">privacy policy</a>)</li>
+  <li><strong>RevenueCat</strong> — Korvi Plus purchases and subscriptions (<a href="https://www.revenuecat.com/privacy">privacy policy</a>)</li>
+  <li><strong>Resend</strong> — account emails such as sign-up confirmation and password reset (<a href="https://resend.com/legal/privacy-policy">privacy policy</a>)</li>
+  <li><strong>Anthropic</strong> — reads a recipe page when you import a recipe from a link, and translates public recipes (<a href="https://www.anthropic.com/legal/privacy">privacy policy</a>)</li>
 </ul>
 
 <h2>6. Data retention</h2>
-<p>Your account data is kept as long as your account exists. If you delete your account, your personal data is removed within 30 days. Anonymised analytics data may be retained longer for aggregate analysis.</p>
+<p>Your account data is kept as long as your account exists.</p>
+<ul>
+  <li><strong>Removing a person</strong> from your household in the app deletes them, with their name and the foods they avoid, straight away.</li>
+  <li><strong>Clearing someone's list</strong> deletes the foods they avoid straight away.</li>
+  <li><strong>Leaving a household, joining another, or being removed by its owner</strong> deletes your place in the household you leave. The foods you avoid aren't deleted: they're copied to your place in the household you move to (one you join, or a new one of your own), where its members can see them. Recipes you wrote come with you. The household's list, meals and Regulars stay with it. We keep a record of which household an account left and when, so a mistaken move can be undone. We haven't yet set a period for deleting these records; we'll add it here when we do.</li>
+  <li><strong>If that leaves the household with nobody in it,</strong> the people you added with a first name, as a child, or with foods they avoid move to the household you move to, with the foods they avoid, and its members can see them. The other people you added (no name, no foods to avoid) are deleted. The emptied household is closed: nobody can open it any more, but its meal plans and shopping lists are kept in our database. We'll delete closed households' meals and lists, and say so here, once we have a set period for it.</li>
+  <li><strong>Deleting your account</strong> (email <a href="mailto:privacy@korvi.eu">privacy@korvi.eu</a>, as on our <a href="/delete-account.html">account deletion page</a>) deletes your account, your place in your household and the foods you avoid, within 30 days. If you were your household's only member, the people you added to it and the foods they avoid aren't yet deleted automatically: ask us in your request and we'll delete them too.</li>
+  <li><strong>Backups.</strong> Our database plan doesn't include backups. Before a major update we take one copy of the database ourselves, only so we can put data back if the update goes wrong. It's kept privately on the founders' computer, outside any cloud storage or code repository, and we delete it within 30 days of taking it at the latest.</li>
+</ul>
+<p><strong>Analytics and error reports</strong> are linked to your account ID, never your name or email, so they are pseudonymised, not anonymous. PostHog keeps analytics events for up to 1 year.</p>
 
 <h2>7. Your rights</h2>
 <p>Under the GDPR, you have the right to access, correct, delete, or export your personal data. To exercise these rights, email us at <a href="mailto:privacy@korvi.eu">privacy@korvi.eu</a>.</p>
 
 <h2>8. Children</h2>
-<p>Korvi is not directed at children under 13. We do not knowingly collect data from children.</p>
+<p>Korvi accounts are for adults; the app isn't directed at children under 13 and we don't knowingly let them sign up. A parent or carer can add a child to their household so Korvi plans for them: that stores only that they're a child, an optional first name and the foods they avoid, entered by the adult, who confirms they're the child's parent or carer when adding foods the child avoids. A child added this way has no account and can't use Korvi. The adult can change or remove the child's details at any time, as above, or email <a href="mailto:privacy@korvi.eu">privacy@korvi.eu</a>.</p>
 
 <h2>9. Changes</h2>
 <p>We may update this policy from time to time. The "last updated" date at the top will change. Continued use of the app after changes constitutes acceptance.</p>
