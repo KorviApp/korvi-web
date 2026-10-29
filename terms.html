@@ -31,52 +31,117 @@
 </style>
 </head>
 <body>
+<!--
+  DRAFT (launch review, branch legal/launch-review). Not for publishing as is.
+  - Every [DECISION: ...] marker is a founder choice; the options' wording is in the HTML comment beside it.
+  - PUBLISH-GATE comments name what must be live before that sentence is true.
+  - "Last updated" is deliberately not bumped; bump it when publishing.
+  - Section numbers changed. Old → new: 1→1, 2 (Beta)→2 (Availability), 3→3, 4→4, new 5 (Public recipes and reporting),
+    new 6 (Korvi Plus), 5→7, 6→8, 7→9, 8→10, 9→11, 10→12, 11→13, 12→14, 13→15, 14→16.
+    The review's "fine as is" sections (old 5, 6, 11, 13) are unchanged in wording.
+-->
 <h1>Korvi — Terms of Service</h1>
 <p class="updated">Last updated: 5 July 2026</p>
 
-<p>These terms are an agreement between you and Korvi ("we", "us", "our") for the use of the Korvi meal-planning and grocery-shopping app. By creating an account or using the app, you agree to these terms. If you do not agree, please do not use Korvi.</p>
+<!-- CHANGED (review item 1): the company is named. -->
+<p>These terms are an agreement between you and Korvi OÜ, a private limited company registered in Estonia (registry code [REGISTRY CODE], registered address [ADDRESS]) ("Korvi", "we", "us", "our"), for the use of the Korvi meal-planning and grocery-shopping app. By creating an account or using the app, you agree to these terms. If you do not agree, please do not use Korvi.</p>
+<!-- PRODUCT note: sign-up shows no terms or age statement today (src/screens/SignInScreen.tsx, EmailSignInScreen.tsx). Recommended: one line on the sign-in screen, "By continuing you confirm you're 18 or over and agree to the Terms and the Privacy Policy", with both links. -->
 
+<!-- CHANGED (founders' list, review item 13): "plans meals", not "a week of meals". -->
 <h2>1. The service</h2>
-<p>Korvi helps you plan a week of meals, generate a grocery shopping list, and compare prices across supermarkets in the Estonian market. Features may change, be added, or be removed as the app develops.</p>
+<p>Korvi helps you plan meals for your household, turn them into a grocery shopping list, compare prices across supermarkets in the Estonian market, and fill a basket on a supermarket's own website. Some features need Korvi Plus (section 6). Features may change, be added, or be removed as the app develops.</p>
 
-<h2>2. Beta software</h2>
-<p>Korvi is currently in beta and provided on an "as is" and "as available" basis. It may contain bugs, be interrupted, or change without notice. We do not guarantee that it will be uninterrupted, error-free, or that any particular feature will remain available.</p>
+<!-- CHANGED (founders' list, review item 13): no longer "beta". -->
+<h2>2. Availability</h2>
+<p>We work to keep Korvi running well, but it is provided on an "as is" and "as available" basis. It may sometimes be interrupted, contain errors, or change. We do not guarantee that it will be uninterrupted or error-free, or that any particular free feature will remain available. If we remove a feature that is part of Korvi Plus, section 6 applies.</p>
 
-<h2>3. Your account</h2>
-<p>You must provide accurate information when you sign up and keep your login credentials secure. You are responsible for activity under your account. You may create or join a household to share meal plans with others; anyone in your household can see and edit shared household data such as the meal plan and shopping list. You must be at least 13 years old to use Korvi.</p>
+<!-- CHANGED (review items 2 and 14): age rule; household visibility. -->
+<h2>3. Your account and your household</h2>
+<p>You must provide accurate information when you sign up and keep your login credentials secure. You are responsible for activity under your account. <mark>[DECISION: minimum age]</mark> <!--
+  OPTION A (recommended): "You must be 18 or over to create a Korvi account."
+  OPTION B: "You must be at least 13 to create a Korvi account. If you're under 18, you need your parent's or carer's permission to buy Korvi Plus or to add foods you avoid." (lawyer to confirm)
+--> You must be 18 or over to create a Korvi account.</p>
+<p>You may create or join a household to share meal plans with others. Anyone in your household can see and edit shared household data such as the meal plan and shopping list. Household members can also see and change each other's foods to avoid and the people the household cooks for. Anyone with your household's invite code or invite link can join it, so only share them with people you want in your household.</p>
 
+<!-- CHANGED (review item 11): the licence covers public recipes, adaptation, translation and staying after deletion. "a Korvi user" per the B1 decision (spec rev 3, OQ-1), not "a Korvi cook". -->
 <h2>4. Your content</h2>
-<p>You keep ownership of the recipes and other content you add. By adding content, you grant us a licence to store, display, and process it so we can provide the app to you and your household. If you choose to make a recipe public, you allow other Korvi users to view, save, and cook it. Do not upload content you do not have the right to share, and do not upload anything unlawful, offensive, or infringing.</p>
+<p>You keep ownership of the recipes and other content you add to Korvi. You give us a non-exclusive, royalty-free licence to store, copy, display, adapt and process your content, only to run Korvi:</p>
+<ul>
+  <li>to show it to you and, for content you share with your household, to the people in your household;</li>
+  <li>for a recipe you make public and we approve, to show it to other Korvi users, who can view, save and cook it;</li>
+  <li>to adapt it so it works in Korvi, for example matching ingredients, scaling amounts or tidying the layout; and</li>
+  <li>to translate it into other languages, including with automated translation tools.</li>
+</ul>
+<p>For a public recipe, this licence continues after you delete your account, so the recipe can stay in Korvi without your name (credited, if Korvi shows a credit, to "a Korvi user"). <mark>[DECISION: taking down a public recipe on request]</mark> <!--
+  OPTION A (recommended): "While you have an account, you can ask us at hello@korvi.eu to take down a public recipe you wrote, and we'll remove it within 30 days."
+  OPTION B: leave this sentence out (a public recipe stays unless it breaks these terms).
+--> While you have an account, you can ask us at <a href="mailto:hello@korvi.eu">hello@korvi.eu</a> to take down a public recipe you wrote, and we'll remove it within 30 days.</p>
+<p>Only add content you have the right to share, and nothing that section 5 doesn't allow.</p>
 
-<h2>5. Prices and product data</h2>
+<!-- NEW (review item 12): content moderation, for the EU Digital Services Act (Art. 11, 12, 14, 16, 17) and Apple guideline 1.2.
+     Evidence: report flow #2350 (migrations 2026102950, 2026102951: reasons wrong_or_unsafe / offensive / spam_or_copied / other, optional note ≤500 chars, hides the recipe for the reporter's household);
+     pre-publication review with reasons shown in My submissions (src/i18n/en.json "rejectionReason"). -->
+<h2>5. Public recipes and reporting</h2>
+<p><strong>What isn't allowed.</strong> Don't share anything that is unlawful; hateful, harassing or discriminatory; sexual; dangerous, including food-safety advice that could make someone ill (for example unsafe preserving, raw or undercooked food presented as safe, or wrong allergen information); content that infringes someone else's rights, such as a recipe copied from a book or website you don't have the right to republish; or spam and advertising.</p>
+<p><strong>Before a recipe is public.</strong> We review every recipe you choose to share with everyone before other users can see it. We may decline it; if we do, the app shows you why under My submissions.</p>
+<p><strong>Reporting a recipe.</strong> On any public recipe, use "Report this recipe" at the end of the recipe page: pick a reason and, if you like, add a note. The recipe is hidden for your household straight away. You can also report a recipe, or any other content you believe is illegal, by emailing <a href="mailto:hello@korvi.eu">hello@korvi.eu</a> with the recipe's name and why. Reports reach Korvi's team, not the recipe's author, and the author isn't told who reported it.</p>
+<p><strong>What we do with reports.</strong> A person on our team reviews every report <mark>[DECISION: response time]</mark> <!--
+  OPTION A (recommended): "within 48 hours"
+  OPTION B: "within 24 hours"
+  (Apple expects "timely" action; both are common. Pick one the founders can keep, including weekends.)
+--> within 48 hours. We may leave the recipe as it is, change it, or remove it. If we remove or restrict a recipe you wrote, we tell you why and on what grounds <mark>[DECISION: how authors are told]</mark> <!--
+  OPTION A (recommended): "in the app, under My submissions"
+  OPTION B: "by email"
+  PRODUCT: neither exists today for a recipe taken down after it was published (recipe_reports.status only records 'actioned'); My submissions shows reasons only for recipes declined before publishing.
+--> in the app, under My submissions, and you can reply to <a href="mailto:hello@korvi.eu">hello@korvi.eu</a> to ask us to look at it again. We use automated tools to match ingredients and translate recipes, but decisions to remove content or restrict an account are made by a person.</p>
+<p><strong>Repeated misuse.</strong> If someone repeatedly shares content this section doesn't allow, we may stop them sharing recipes publicly or suspend their account (see section 11).</p>
+<p><strong>Contact point.</strong> Our single point of contact for users and for authorities, including under the EU Digital Services Act, is <a href="mailto:hello@korvi.eu">hello@korvi.eu</a>. You can write to us in English or Estonian.</p>
+
+<!-- NEW (review item 13): Korvi Plus. Evidence: docs/korvi-plus-billing.md (price €2.99 base Estonia, product korvi_plus_monthly, 7-day trial on both stores, Family Sharing off); src/i18n/en.json plus.terms / plus.trialTerms (in-app wording this matches); Plus belongs to the household (plus.subtitle, plus.activeBody). -->
+<h2>6. Korvi Plus</h2>
+<p><strong>What it is.</strong> Korvi Plus is an optional paid subscription that adds features to Korvi for your whole household, such as seeing which shop is cheapest for your list and filling an online basket in one go. One subscription covers everyone in the household while it's paid for. It belongs to the household: if the person who pays leaves the household, Korvi Plus stays with the household until the subscription ends.</p>
+<p><strong>Price and free trial.</strong> Korvi Plus costs €2.99 a month, including VAT, and is offered in Estonia. The app shows the price in your store before you buy. New subscribers get the first 7 days free; the store decides whether you're eligible. If you cancel before the trial ends, you pay nothing.</p>
+<p><strong>Renewal and cancelling.</strong> The subscription renews automatically every month at the current price until you cancel. You buy, manage and cancel it in the App Store or Google Play, not in Korvi: cancel in your store account's subscription settings at least 24 hours before the next renewal and you won't be charged again. Korvi Plus then continues until the end of the period you've paid for. Deleting your Korvi account does not cancel the subscription.</p>
+<p><strong>Payment and refunds.</strong> Payment is taken by Apple or Google under their terms, and we never see your card or bank details. Refunds are handled by Apple or Google under their refund rules; ask them through your store account.</p>
+<p><strong>Your right to withdraw.</strong> <mark>[DECISION: withdrawal wording, for the outside lawyer]</mark> <!--
+  Draft to check with the lawyer: how the App Store and Google Play purchase flows record the consumer's express request that the service starts straight away, and what that means for the 14-day right of withdrawal for digital services (Consumer Rights Directive Art. 9, 14(3), 16; Estonian Law of Obligations Act).
+  Proposed: "If you're a consumer in the EU, you have the right to withdraw from the subscription within 14 days of buying it, without giving a reason. Because you ask for Korvi Plus to start straight away, if you withdraw after it has started you may have to pay for the days you used. To withdraw, ask Apple or Google for a refund through your store account, or email hello@korvi.eu and we'll help."
+--> If you're a consumer in the EU, you have the right to withdraw from the subscription within 14 days of buying it, without giving a reason. Because you ask for Korvi Plus to start straight away, if you withdraw after it has started you may have to pay for the days you used. To withdraw, ask Apple or Google for a refund through your store account, or email <a href="mailto:hello@korvi.eu">hello@korvi.eu</a> and we'll help.</p>
+<p><strong>Changes to Korvi Plus.</strong> If we raise the price or take away a feature that's part of Korvi Plus, we'll tell you at least 30 days before the change applies, and the store will ask for your agreement where its rules require it. You can cancel before the change applies.</p>
+
+<h2>7. Prices and product data</h2>
 <p>Grocery prices, product availability, pack sizes, and store information shown in Korvi are estimates gathered from third-party supermarkets and may be out of date or inaccurate. They are provided for planning convenience only. The actual price and availability at the store or checkout is what applies. We are not a party to your purchases and are not responsible for the accuracy of supermarket pricing or for any store's products.</p>
 
-<h2>6. Allergens and dietary information</h2>
+<h2>8. Allergens and dietary information</h2>
 <p><strong>Always check allergen and ingredient information yourself before cooking or eating.</strong> Allergen tags, dietary labels, and nutritional figures in Korvi are best-effort and may be incomplete or wrong. They are not medical or dietary advice. If you have a food allergy, intolerance, or medical condition, rely on the actual product packaging and, where needed, a qualified professional — not on Korvi.</p>
 
-<h2>7. Acceptable use</h2>
+<!-- Unchanged apart from the number. See Q1 in the review report: Korvi itself reads supermarket websites for prices. -->
+<h2>9. Acceptable use</h2>
 <p>You agree not to misuse the app, including: using it for any unlawful purpose; attempting to access other users' data; disrupting or overloading the service; reverse-engineering or scraping it; or using it to send spam or harmful content.</p>
 
-<h2>8. Third-party services</h2>
-<p>Korvi relies on third-party services (for example supermarkets, and sign-in providers such as Google, Apple, and Facebook). Your use of those services is subject to their own terms. We are not responsible for third-party services.</p>
+<h2>10. Third-party services</h2>
+<p>Korvi relies on third-party services (for example supermarkets, the App Store and Google Play, and sign-in providers such as Google, Apple, and Facebook). Your use of those services is subject to their own terms. We are not responsible for third-party services.</p>
 
-<h2>9. Termination</h2>
-<p>You can stop using Korvi at any time and delete your account from within the app; see our <a href="https://korvi.eu/delete-account.html">account deletion page</a> for details. We may suspend or terminate access if you breach these terms or use the app in a way that could harm Korvi or other users.</p>
+<!-- CHANGED: in-app deletion (PUBLISH-GATE: B1, #578, live on production); reasons for a suspension (DSA Art. 17). -->
+<h2>11. Termination</h2>
+<p>You can stop using Korvi at any time and delete your account in the app (Settings, Account, Delete account); see our <a href="https://korvi.eu/delete-account.html">account deletion page</a> for details. Deleting your account doesn't cancel Korvi Plus (see section 6). We may suspend or terminate access if you seriously or repeatedly breach these terms or use the app in a way that could harm Korvi or other users. When we do, we'll tell you why, unless the law stops us, and you can reply to <a href="mailto:hello@korvi.eu">hello@korvi.eu</a> to ask us to look at it again.</p>
 
-<h2>10. Disclaimers</h2>
+<h2>12. Disclaimers</h2>
 <p>To the extent permitted by law, Korvi is provided without warranties of any kind, whether express or implied, including fitness for a particular purpose. We do not warrant that meal plans, prices, or dietary information will meet your requirements.</p>
 
-<h2>11. Limitation of liability</h2>
+<h2>13. Limitation of liability</h2>
 <p>To the extent permitted by law, we are not liable for any indirect or consequential loss arising from your use of the app, or for loss caused by inaccurate prices or product data. Nothing in these terms limits liability that cannot be limited under applicable law, including your rights as a consumer under Estonian and EU law.</p>
 
-<h2>12. Changes to these terms</h2>
-<p>We may update these terms as the app develops. If we make a material change, we will update the "last updated" date above and, where appropriate, notify you in the app. Continued use after a change means you accept the updated terms.</p>
+<!-- CHANGED (review item 3): notice before material changes; no "continued use means you accept" for them. -->
+<h2>14. Changes to these terms</h2>
+<p>We may update these terms as the app develops. If we make a material change, we'll tell you in the app or by email at least 30 days before it takes effect, and update the "last updated" date above. If you have Korvi Plus, you can cancel it before the change applies. If you don't agree to a change, you can stop using Korvi and delete your account. Changes that aren't material, such as clearer wording or a new feature, apply when we publish them.</p>
 
-<h2>13. Governing law</h2>
+<h2>15. Governing law</h2>
 <p>These terms are governed by the laws of Estonia. Mandatory consumer-protection rights available to you under the law of your country of residence are not affected.</p>
 
-<h2>14. Contact</h2>
-<p>Questions about these terms? Email us at <a href="mailto:hello@korvi.eu">hello@korvi.eu</a>. See also our <a href="https://korvi.eu/privacy.html">Privacy Policy</a>.</p>
+<!-- CHANGED (review item 1). -->
+<h2>16. Contact</h2>
+<p>Korvi OÜ, registry code [REGISTRY CODE], [ADDRESS], Estonia. Questions about these terms? Email us at <a href="mailto:hello@korvi.eu">hello@korvi.eu</a>. See also our <a href="https://korvi.eu/privacy.html">Privacy Policy</a>.</p>
 
 </body>
 </html>
