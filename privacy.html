@@ -118,11 +118,8 @@
 <!-- CHANGED: GitHub (feedback, create-feedback-issue/index.ts:94) and Cloudflare (R2: recipe images, feedback screenshots; _shared/screenshotStorage.ts, recipe-image-upload) were missing. -->
 <p>Some of the services we use are based in the United States and can process personal data there: <strong>RevenueCat</strong> (Korvi Plus purchases), <strong>Expo</strong> (app updates), <strong>Resend</strong> (account emails), <strong>Anthropic</strong> (see below), <strong>GitHub</strong> (where we keep feedback) and <strong>Cloudflare</strong> (storage for recipe pictures and feedback screenshots). Each describes the safeguards it relies on for transfers from the EU, such as the EU-US Data Privacy Framework or standard contractual clauses, in its privacy policy, linked in section 5. If you sign in with Google, Apple or Facebook, that provider handles your sign-in under its own privacy policy.</p>
 <!-- CHANGED (review item 10): what Anthropic receives, and training. Evidence: supabase/functions/url-import (modelParse.ts, structureParse.ts), ingredient-match/index.ts + _shared/ingredientMatchModel.ts:183, translate-recipes; all call https://api.anthropic.com/v1/messages with an API key (Anthropic's commercial API). -->
-<p><strong>Anthropic</strong> receives recipe text only: the web page of a recipe you import from a link, the ingredient lines you type or import when Korvi suggests matching ingredients, and public recipes we translate. <mark>[DECISION: Anthropic training sentence]</mark> <!--
-  Add ONLY after Oli confirms in the Anthropic Console that the organisation is under Anthropic's Commercial Terms and has not opted in to any programme that shares API data for training:
-  "Anthropic doesn't use this content to train its models."
-  If it can't be confirmed, leave the sentence out.
---></p>
+<p><strong>Anthropic</strong> receives recipe text only: the web page of a recipe you import from a link, the ingredient lines you type or import when Korvi suggests matching ingredients, and public recipes we translate. Anthropic handles it under its commercial terms: it doesn't use it to train its models, and keeps it for up to 30 days before deleting it.</p>
+<!-- CHANGED (review item 10): confirmed by Oli in the Anthropic Console, 2026-10-29: both organisations (Korvi, Team API plan; Oli's Individual Org, Individual API plan) have not joined the Development Partner Program, user feedback is off, and data retention is the 30-day default. Re-check if either changes. -->
 
 <h2>5. Third-party services</h2>
 <ul>
