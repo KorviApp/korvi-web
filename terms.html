@@ -33,7 +33,8 @@
 <body>
 <!--
   DRAFT (launch review, branch legal/launch-review). Not for publishing as is.
-  - Every [DECISION: ...] marker is a founder choice; the options' wording is in the HTML comment beside it.
+  - Oli's decisions of 2026-10-29 are applied (18+; authors told by email for now; blocking explained).
+  - Remaining [DECISION: ...] / [REGISTRY CODE] / [ADDRESS] markers are still open; options' wording is in the HTML comment beside each.
   - PUBLISH-GATE comments name what must be live before that sentence is true.
   - "Last updated" is deliberately not bumped; bump it when publishing.
   - Section numbers changed. Old → new: 1→1, 2 (Beta)→2 (Availability), 3→3, 4→4, new 5 (Public recipes and reporting),
@@ -45,7 +46,7 @@
 
 <!-- CHANGED (review item 1): the company is named. -->
 <p>These terms are an agreement between you and Korvi OÜ, a private limited company registered in Estonia (registry code [REGISTRY CODE], registered address [ADDRESS]) ("Korvi", "we", "us", "our"), for the use of the Korvi meal-planning and grocery-shopping app. By creating an account or using the app, you agree to these terms. If you do not agree, please do not use Korvi.</p>
-<!-- PRODUCT note: sign-up shows no terms or age statement today (src/screens/SignInScreen.tsx, EmailSignInScreen.tsx). Recommended: one line on the sign-in screen, "By continuing you confirm you're 18 or over and agree to the Terms and the Privacy Policy", with both links. -->
+<!-- PUBLISH-GATE: B7 live (sign-in shows "By continuing you confirm you're 18 or over and agree to the Terms and the Privacy Policy", with both links). Today sign-up shows no terms or age statement (src/screens/SignInScreen.tsx, EmailSignInScreen.tsx). -->
 
 <!-- CHANGED (founders' list, review item 13): "plans meals", not "a week of meals". -->
 <h2>1. The service</h2>
@@ -57,10 +58,7 @@
 
 <!-- CHANGED (review items 2 and 14): age rule; household visibility. -->
 <h2>3. Your account and your household</h2>
-<p>You must provide accurate information when you sign up and keep your login credentials secure. You are responsible for activity under your account. <mark>[DECISION: minimum age]</mark> <!--
-  OPTION A (recommended): "You must be 18 or over to create a Korvi account."
-  OPTION B: "You must be at least 13 to create a Korvi account. If you're under 18, you need your parent's or carer's permission to buy Korvi Plus or to add foods you avoid." (lawyer to confirm)
---> You must be 18 or over to create a Korvi account.</p>
+<p>You must provide accurate information when you sign up and keep your login credentials secure. You are responsible for activity under your account. You must be 18 or over to create a Korvi account, and you confirm this when you first sign in.</p>
 <p>You may create or join a household to share meal plans with others. Anyone in your household can see and edit shared household data such as the meal plan and shopping list. Household members can also see and change each other's foods to avoid and the people the household cooks for. Anyone with your household's invite code or invite link can join it, so only share them with people you want in your household.</p>
 
 <!-- CHANGED (review item 11): the licence covers public recipes, adaptation, translation and staying after deletion. "a Korvi user" per the B1 decision (spec rev 3, OQ-1), not "a Korvi cook". -->
@@ -89,11 +87,9 @@
   OPTION A (recommended): "within 48 hours"
   OPTION B: "within 24 hours"
   (Apple expects "timely" action; both are common. Pick one the founders can keep, including weekends.)
---> within 48 hours. We may leave the recipe as it is, change it, or remove it. If we remove or restrict a recipe you wrote, we tell you why and on what grounds <mark>[DECISION: how authors are told]</mark> <!--
-  OPTION A (recommended): "in the app, under My submissions"
-  OPTION B: "by email"
-  PRODUCT: neither exists today for a recipe taken down after it was published (recipe_reports.status only records 'actioned'); My submissions shows reasons only for recipes declined before publishing.
---> in the app, under My submissions, and you can reply to <a href="mailto:hello@korvi.eu">hello@korvi.eu</a> to ask us to look at it again. We use automated tools to match ingredients and translate recipes, but decisions to remove content or restrict an account are made by a person.</p>
+--> within 48 hours. We may leave the recipe as it is, change it, or remove it. If we remove or restrict a recipe you wrote, we email you to tell you why and on what grounds, and you can reply to <a href="mailto:hello@korvi.eu">hello@korvi.eu</a> to ask us to look at it again. We use automated tools to match ingredients and translate recipes, but decisions to remove content or restrict an account are made by a person.</p>
+<!-- Blocking (Apple 1.2): Korvi shows no author names (B2, #2350), so there is no user to block; reporting hides the recipe for the household. Say the same in the App Review notes (route row C4). Takedown notice by email by hand for now (Oli, 2026-10-29); recipe_reports.status only records 'actioned'. -->
+<p><strong>Who wrote a recipe.</strong> Korvi doesn't show who wrote a public recipe, and users can't message or follow each other in Korvi. If a public recipe bothers you, report it: it's hidden for your household straight away.</p>
 <p><strong>Repeated misuse.</strong> If someone repeatedly shares content this section doesn't allow, we may stop them sharing recipes publicly or suspend their account (see section 11).</p>
 <p><strong>Contact point.</strong> Our single point of contact for users and for authorities, including under the EU Digital Services Act, is <a href="mailto:hello@korvi.eu">hello@korvi.eu</a>. You can write to us in English or Estonian.</p>
 
