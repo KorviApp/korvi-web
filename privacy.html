@@ -170,7 +170,8 @@
        PUBLISH-GATE: the 22 Oct production copy (C:\Users\Oli\korvi-x30-backup-20261022\, unencrypted, BitLocker off) is deleted (route C16, by 21 Nov), and the runbook for the next copy (redesign-promotion.md C1.2 pattern) requires encryption. -->
   <li><strong>Backups.</strong> Our database plan doesn't include backups. Before a major update we take one copy of the database ourselves, only so we can put data back if the update goes wrong. It's kept only in encrypted form, never in cloud storage or a code repository, and we delete it within 30 days of taking it at the latest. Data you delete can stay in such a copy until it's deleted.</li>
 </ul>
-<p><strong>Analytics and error reports</strong> are linked to your account ID, never your name or email, so they are pseudonymised, not anonymous. PostHog keeps analytics events for up to 1 year. Sentry keeps error reports for <mark>[CHECK: Sentry retention on our plan]</mark>.</p>
+<p><strong>Analytics and error reports</strong> are linked to your account ID, never your name or email, so they are pseudonymised, not anonymous. PostHog keeps analytics events for up to 1 year. On our current plan, Sentry keeps error reports for 30 days.</p>
+<!-- CHANGED (review item 6): Sentry org 'korvi' is on the Developer plan (checked in Sentry's Subscription page, 2026-10-29); Developer keeps all data 30 days (docs.sentry.io/security-legal-pii/security/data-retention-periods). Update if the plan changes (Team keeps errors 90 days). -->
 
 <!-- CHANGED (review item 4): rights section completed. -->
 <h2>7. Your rights</h2>
