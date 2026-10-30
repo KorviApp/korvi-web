@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Korvi — Email confirmed</title>
+<meta name="description" content="Your Korvi email address is confirmed.">
+<link rel="canonical" href="https://korvi.eu/confirmed.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Korvi">
+<meta property="og:url" content="https://korvi.eu/confirmed.html">
+<meta property="og:title" content="Korvi — Email confirmed">
+<meta property="og:description" content="Your Korvi email address is confirmed.">
+<meta property="og:image" content="https://korvi.eu/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Korvi — Email confirmed">
+<meta name="twitter:description" content="Get help with Korvi: contact details, Korvi Plus, deleting your account, reporting a recipe, privacy and which shops Korvi uses.">
+<meta name="twitter:image" content="https://korvi.eu/og-default.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 680px; margin: 0 auto; padding: 24px; color: #0F1413; line-height: 1.7; }
+  h1 { color: #2D7A3A; }
+  h2 { color: #0F1413; margin-top: 32px; }
+  a { color: #2D7A3A; }
+  .card { background: #F6F6F3; border-radius: 16px; padding: 24px; margin: 24px 0; }
+  .card h3 { margin-top: 0; }
+  .updated { color: #6B7572; font-size: 14px; }
+</style>
+<meta name="robots" content="noindex">
+</head>
+<body>
+<h1>Your email is confirmed</h1>
+<p>Thanks. Your Korvi account is ready.</p>
+<p><strong>Open Korvi on your phone and sign in</strong> with your email and password.</p>
+<p id="open-wrap" hidden><a id="open-app" href="korvi://auth/callback">Open Korvi</a></p>
+<p>Don't have the app yet? Get Korvi on <a href="https://play.google.com/store/apps/details?id=eu.korvi.app">Google Play</a> or the <a href="https://apps.apple.com/app/id6788116102">App Store</a>.</p>
+<p>Questions? Email <a href="mailto:hello@korvi.eu">hello@korvi.eu</a>.</p>
+<script>
+(function () {
+  var target = 'korvi://auth/callback' + window.location.search + window.location.hash;
+  var link = document.getElementById('open-app');
+  link.href = target;
+  if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    document.getElementById('open-wrap').hidden = false;
+    window.location.replace(target);
+  }
+})();
+</script>
+</body>
+</html>
