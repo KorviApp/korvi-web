@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Korvi — Delete Your Account</title>
-<meta name="description" content="How to request deletion of your Korvi account, what gets deleted, and what we retain.">
+<meta name="description" content="How to delete your Korvi account in the app, what is deleted straight away, what stays, and how to delete some of your data without deleting your account.">
 <link rel="canonical" href="https://korvi.eu/delete-account.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Korvi">
 <meta property="og:url" content="https://korvi.eu/delete-account.html">
 <meta property="og:title" content="Korvi — Delete Your Account">
-<meta property="og:description" content="How to request deletion of your Korvi account, what gets deleted, and what we retain.">
+<meta property="og:description" content="How to delete your Korvi account in the app, what is deleted straight away, what stays, and how to delete some of your data without deleting your account.">
 <meta property="og:image" content="https://korvi.eu/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Korvi — Delete Your Account">
-<meta name="twitter:description" content="How to request deletion of your Korvi account, what gets deleted, and what we retain.">
+<meta name="twitter:description" content="How to delete your Korvi account in the app, what is deleted straight away, what stays, and how to delete some of your data without deleting your account.">
 <meta name="twitter:image" content="https://korvi.eu/og-default.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
@@ -29,39 +29,75 @@
   a { color: #2D7A3A; }
   .card { background: #F6F6F3; border-radius: 16px; padding: 24px; margin: 24px 0; }
   .card h3 { margin-top: 0; }
+  .updated { color: #6B7572; font-size: 14px; }
 </style>
 </head>
 <body>
+<!--
+  DRAFT (launch route row B3, branch legal/launch-review). Not for publishing as is.
+  - PUBLISH-GATE: B1 (#578, in-app account deletion) live on production (route row E2) and in the store build people download. Until then the app has no Delete account row and the old email-only page is the true one.
+  - PUBLISH-GATE (section "Delete some of your data"): B8 live (Settings, Usage data switch; merged as #2367, needs the store build) and B11 live for the "Food you avoid" wording. The page is the URL for Google Play's Data safety form, so publish it together with the first production build.
+  - Facts come from docs/design/account-deletion.md rev 3 (sections 2, 3.4, 5) and the privacy draft (section 6). If one changes, change both.
+  - "Last updated" is deliberately a placeholder date; set it when publishing.
+-->
 <h1>Delete your Korvi account</h1>
+<p class="updated">Last updated: 30 October 2026</p>
 
-<p>We're sorry to see you go. If you'd like to delete your Korvi account and all associated data, here's how.</p>
+<p>You can delete your Korvi account yourself, in the app. It takes a minute, and it happens straight away.</p>
 
 <div class="card">
-<h3>How to request deletion</h3>
-<p>Send an email to <a href="mailto:privacy@korvi.eu">privacy@korvi.eu</a> from the email address associated with your Korvi account, with the subject line <strong>"Delete my account"</strong>.</p>
-<p>We'll confirm your request within 48 hours and delete your data within 30 days.</p>
+<h3>How to delete your account</h3>
+<ol>
+  <li>Open Korvi and go to <strong>Settings</strong>.</li>
+  <li>Under <strong>Account</strong>, tap <strong>Delete account</strong>.</li>
+  <li>Read what will be deleted and what will stay, then tap <strong>Delete my account</strong> and confirm.</li>
+</ol>
+<p>Deleting can't be undone. You need to be online.</p>
+<p><strong>Signed in with Apple?</strong> On an iPhone, Apple asks you to confirm once more. This lets Korvi stop using your Apple ID. On Android, Korvi can't ask Apple to confirm. Your account is still deleted, and the app tells you how to remove Korvi from your Apple ID yourself: on an iPhone or Mac, open Settings, tap your name, then Sign in with Apple.</p>
+<p><strong>Can't use the app?</strong> Email <a href="mailto:privacy@korvi.eu">privacy@korvi.eu</a> from the address you signed up with, with the subject <strong>"Delete my account"</strong>. We'll check it's you, delete the account, and tell you when it's done. We answer within one month at the latest.</p>
 </div>
 
-<h2>What gets deleted</h2>
+<h2>What is deleted straight away</h2>
 <ul>
-  <li>Your account and login credentials</li>
-  <li>Your display name and profile picture</li>
-  <li>The foods you avoid</li>
-  <li>Your household membership (other members keep their accounts)</li>
-  <li>Any recipes you submitted (unless shared with the community)</li>
-  <li>Your feedback messages</li>
+  <li>Your account: your name, email, profile picture and how you sign in, and every session on every phone.</li>
+  <li>Your place in your household, and the foods you avoid.</li>
+  <li>Your private recipes, and drafts and submissions still waiting for review or turned down.</li>
+  <li>Your saved recipes, and your records of moving between households.</li>
+  <li>The note on any recipe report you made.</li>
 </ul>
 
-<h2>What we retain</h2>
+<h2>What happens to your household</h2>
 <ul>
-  <li>Analytics data (screen views, feature usage), linked to your account ID but never your name or email, for up to 1 year</li>
-  <li>Community recipes you made public (attributed to "Korvi user" instead of your name)</li>
+  <li><strong>If other people with an account are in it,</strong> the household carries on. The one who has been in it longest becomes its owner. Its meals, shopping lists, Regulars and the people in it stay.</li>
+  <li><strong>If you are the only person with an account in it,</strong> the household is deleted with everything in it: the people you added (such as children) and the foods they avoid, its meals, shopping lists, Regulars, and the recipes you wrote for it.</li>
 </ul>
 
-<p>Questions? Email <a href="mailto:privacy@korvi.eu">privacy@korvi.eu</a>.</p>
+<h2>What stays</h2>
+<ul>
+  <li><strong>Recipes you wrote for your household</strong> stay with the household if it carries on, without your name.</li>
+  <li><strong>Public recipes you shared that we approved</strong> stay in Korvi without your name. If Korvi shows a credit, it says "a Korvi user".</li>
+  <li><strong>Recipe reports you made</strong> stay, without your note or your name, so we still know the report was made.</li>
+  <li><strong>Usage data and error reports</strong> (usage data only if you agreed to it) carry an ID number, never your name or email. Once your account is gone, nothing links that number to you. PostHog keeps usage data for up to 1 year and Sentry keeps error reports for 30 days.</li>
+  <li><strong>Feedback you sent</strong> stays with its text and your old ID number, which no longer links to anyone. We remove any email address from it.</li>
+  <li><strong>Backups.</strong> Data you delete can stay in a copy we take before a major update, until we delete that copy (within 30 days of taking it at the latest).</li>
+</ul>
+<p>The full list is in section 6 of the <a href="/privacy.html">Privacy Policy</a>.</p>
+
+<h2>Your subscription is not cancelled</h2>
+<p>Deleting your account does <strong>not</strong> cancel Korvi Plus. The App Store or Google Play keeps charging you until you cancel there. Cancel it in your App Store subscriptions or your Google Play subscriptions. If you bought it on another phone, cancel it in that phone's store. If your household stays, Korvi Plus stays with it while it is paid for.</p>
+
+<h2 id="some-data">Delete some of your data without deleting your account</h2>
+<p>You don't have to delete your account to remove data. In the app you can:</p>
+<ul>
+  <li><strong>Remove a person you cook for</strong> (Household): their name and the foods they avoid are deleted straight away.</li>
+  <li><strong>Clear a food-to-avoid list</strong> (Settings, Food you avoid): the foods are deleted straight away.</li>
+  <li><strong>Delete your own recipes.</strong> A recipe you delete is removed for everyone in your household.</li>
+  <li><strong>Turn off usage data</strong> (Settings, Usage data): Korvi stops sending it. Usage data already sent stays for up to 1 year, linked to an ID number and never your name or email.</li>
+</ul>
+<p>For anything else, or if you can't use the app, email <a href="mailto:privacy@korvi.eu">privacy@korvi.eu</a> and say what you want removed. We answer within one month at the latest.</p>
 
 <p style="margin-top: 32px; font-size: 14px; color: #6B7572;">
-  <a href="/privacy.html">Privacy Policy</a> · <a href="/">Back to Korvi</a>
+  <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a> · <a href="/support.html">Support</a> · <a href="/">Back to Korvi</a>
 </p>
 </body>
 </html>
